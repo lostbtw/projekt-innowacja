@@ -7,7 +7,20 @@
         <members>Lead</members>
         <members>Product2</members>
         <members>Order</members>
+        <members>Animal__c</members> 
         <name>CustomObject</name>
+    </types>
+    <types>
+        <members>AIMals</members> 
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Animal__c</members> 
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Animal_Set_Adoption_Date</members> 
+        <name>Flow</name>
     </types>
     <types>
         <members>Account-Account Layout</members>
@@ -16,6 +29,7 @@
         <members>Lead-Lead Layout</members>
         <members>Product2-Product Layout</members>
         <members>Order-Order Layout</members>
+        <members>Animal__c-Animal Layout</members> 
         <name>Layout</name>
     </types>
     <types>

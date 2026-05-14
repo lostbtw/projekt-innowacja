@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Status__c</fullName>
+    <fullName>Species__c</fullName>
+    <description>Field to track the species of the animal in the shelter</description>
     <externalId>false</externalId>
-    <label>Status</label>
+    <inlineHelpText>Please select the species of the animal.</inlineHelpText>
+    <label>Species</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
@@ -11,24 +13,29 @@
         <valueSetDefinition>
             <sorted>false</sorted>
             <value>
-                <fullName>New</fullName>
+                <fullName>Dog</fullName>
                 <default>false</default>
-                <label>New</label>
+                <label>Dog</label>
             </value>
             <value>
-                <fullName>Quarantine</fullName>
+                <fullName>Cat</fullName>
                 <default>false</default>
-                <label>Quarantine</label>
+                <label>Cat</label>
             </value>
             <value>
-                <fullName>Ready for Adoption</fullName>
+                <fullName>Rabbit</fullName>
                 <default>false</default>
-                <label>Ready for Adoption</label>
+                <label>Rabbit</label>
             </value>
             <value>
-                <fullName>Adopted</fullName>
+                <fullName>Hamster</fullName>
                 <default>false</default>
-                <label>Adopted</label>
+                <label>Hamster</label>
+            </value>
+            <value>
+                <fullName>Bird</fullName>
+                <default>false</default>
+                <label>Bird</label>
             </value>
         </valueSetDefinition>
     </valueSet>
