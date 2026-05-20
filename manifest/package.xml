@@ -26,10 +26,6 @@
         <name>Layout</name>
     </types>
     <types>
-        <members>Admin</members>
-        <name>Profile</name>
-    </types>
-    <types>
         <members>Adoption__c</members>
         <members>Shelter__c</members>
         <name>CustomTab</name>
