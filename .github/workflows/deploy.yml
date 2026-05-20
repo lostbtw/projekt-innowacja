@@ -21,4 +21,4 @@ jobs:
           sf org login sfdx-url --sfdx-url-file sfdx_auth_url.txt --alias ci
 
       - name: Deploy metadata
-        run: sf project deploy start --manifest manifest/package.xml
+        run: sf project deploy start --manifest manifest/package.xml --target-org ci
