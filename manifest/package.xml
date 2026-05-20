@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>Account</members>
@@ -7,6 +7,9 @@
         <members>Lead</members>
         <members>Product2</members>
         <members>Order</members>
+        <members>Animal__c</members>
+        <members>Adoption__c</members>
+        <members>Shelter__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -16,11 +19,16 @@
         <members>Lead-Lead Layout</members>
         <members>Product2-Product Layout</members>
         <members>Order-Order Layout</members>
+        <members>Adoption__c-Adoption Real Layout</members>
+        <members>Adoption__c-Adoption Virtual Layout</members>
+        <members>Shelter__c-Shelter Layout</members>
+        <members>Animal__c-Animal Layout</members>
         <name>Layout</name>
     </types>
     <types>
-        <members>Admin</members>
-        <name>Profile</name>
+        <members>Adoption__c</members>
+        <members>Shelter__c</members>
+        <name>CustomTab</name>
     </types>
     <version>56.0</version>
 </Package>
