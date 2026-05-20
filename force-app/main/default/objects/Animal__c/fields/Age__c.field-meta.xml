@@ -3,7 +3,7 @@
     <fullName>Age__c</fullName>
     <externalId>false</externalId>
     <label>Age</label>
-    <precision>18</precision>
+    <precision>4</precision>
     <required>false</required>
     <scale>0</scale>
     <trackTrending>false</trackTrending>

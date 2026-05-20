@@ -12,6 +12,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Shelter__c</field>
                 <field>Species__c</field>
             </layoutItems>
             <layoutItems>
