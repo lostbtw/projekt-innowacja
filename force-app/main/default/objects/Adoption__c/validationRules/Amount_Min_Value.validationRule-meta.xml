@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount_Min_Value</fullName>
+    <active>true</active>
+    <description
+  >Field Amount on object Adoption. Value can&apos;t be lower that 10.</description>
+    <errorConditionFormula>Amount__c  &lt; 10</errorConditionFormula>
+    <errorDisplayField>Amount__c</errorDisplayField>
+    <errorMessage>Amount value can&apos;t be lower that 10.</errorMessage>
+</ValidationRule>
