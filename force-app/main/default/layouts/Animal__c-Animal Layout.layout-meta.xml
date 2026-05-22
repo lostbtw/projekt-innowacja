@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <layoutSections>
         <customLabel>false</customLabel>
         <detailHeading>false</detailHeading>
@@ -38,12 +39,12 @@
                 <behavior>Edit</behavior>
                 <field>Age__c</field>
             </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Date_of_admission__c</field>
             </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Likes__c</field>
@@ -55,6 +56,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Special_needs__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Photo_Preview__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
