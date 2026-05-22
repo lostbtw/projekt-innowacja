@@ -30,5 +30,9 @@
         <members>Shelter__c</members>
         <name>CustomTab</name>
     </types>
+    <types>
+        <members>Admin</members>
+        <name>Profile</name>
+    </types>
     <version>56.0</version>
 </Package>
