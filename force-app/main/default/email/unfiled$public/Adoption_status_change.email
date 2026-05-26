@@ -1,0 +1,14 @@
+<table border="0" cellpadding="5" width="600" cellspacing="5" height="400" >
+<tr valign="top" height="50" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[<pre class="tw-data-text tw-text-large tw-ta" data-placeholder="Перевод" id="tw-target-text" role="text" style="text-align:left" tabindex="-1" data-ved="2ahUKEwii7uKUicuUAxU9KRAIHWAPKYcQ3ewLegQIFxAU" dir="ltr" aria-label="Переведенный текст: an email informing the adopter about the change in adoption status with all important information">Logo</pre><br>]]></td>
+</tr>
+<tr valign="top" height="300" >
+<td tEditID="c1r2" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r2" locked="0" >
+<![CDATA[Good Morning {!Contact.FirstName} {!Contact.LastName},<br>Status of adoption for your animal {!Adoption__c.Name} has changed to {!Adoption__c.Status__c}]]></td>
+</tr>
+<tr valign="top" height="50" >
+<td tEditID="c1r3" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r3" locked="0" >
+<![CDATA[Innowacja 2026 group 2]]></td>
+</tr>
+</table>
