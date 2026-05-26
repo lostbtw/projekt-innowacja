@@ -44,5 +44,9 @@
         <members>Admin</members>
         <name>Profile</name>
     </types>
+    <types>
+        <members>unfiled$public/Adoption_status_change</members>
+        <name>EmailTemplate</name>
+    </types>
     <version>56.0</version>
 </Package>
