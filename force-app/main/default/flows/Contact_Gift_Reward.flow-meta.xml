@@ -8,6 +8,7 @@
         <expression>FLOOR({!$Record.Total_Points__c} / 30)</expression>
         <scale>0</scale>
     </formulas>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <interviewLabel>Contact Gift Reward {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Contact Gift Reward</label>
     <processMetadataValues>
