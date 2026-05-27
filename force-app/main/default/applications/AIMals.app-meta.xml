@@ -10,12 +10,12 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>AI:Mals</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
     <tabs>Shelter__c</tabs>
     <tabs>Animal__c</tabs>
+    <tabs>standard-report</tabs>
     <tabs>Adoption__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>AI_Mals_UtilityBar</utilityBar>
