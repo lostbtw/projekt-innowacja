@@ -52,5 +52,9 @@
         <members>LetterHead</members>
         <name>Letterhead</name>
     </types>
+    <types>
+    <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
     <version>66.0</version>
 </Package>
