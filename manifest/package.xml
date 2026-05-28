@@ -48,5 +48,9 @@
         <members>unfiled$public/Adoption_status_change</members>
         <name>EmailTemplate</name>
     </types>
+    <types>
+        <members>LetterHead</members>
+        <name>Letterhead</name>
+    </types>
     <version>56.0</version>
 </Package>
