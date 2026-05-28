@@ -44,5 +44,13 @@
         <members>Admin</members>
         <name>Profile</name>
     </types>
+    <types>
+        <members>unfiled$public/Adoption_status_change</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>LetterHead</members>
+        <name>Letterhead</name>
+    </types>
     <version>66.0</version>
 </Package>
