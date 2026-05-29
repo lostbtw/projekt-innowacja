@@ -38,7 +38,6 @@
     </types>
     <types>
     <members>AI_Mals_UtilityBar</members>
-    <members>Case_Record_Page</members>
     <name>FlexiPage</name>
     </types>
     <types>
@@ -53,19 +52,6 @@
         <members>LetterHead</members>
         <name>Letterhead</name>
     </types>
-
-    <types>
-        <members>Contact.Total_Points__c</members>
-        <members>Contact.Rewards_Claimed__c</members>
-        <name>CustomField</name>
-    </types>
-
-    <types>
-        <members>Adoption_Points_Rollup</members>
-        <members>Contact_Gift_Reward</members>
-        <name>Flow</name>
-    </types>
-
     <types>
     <members>*</members>
         <name>ApexTrigger</name>
