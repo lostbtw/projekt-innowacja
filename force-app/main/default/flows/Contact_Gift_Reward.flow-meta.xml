@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>66.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
+    <formulas>
+        <name>calc_NewRewardCount</name>
+        <dataType>Number</dataType>
+        <expression>FLOOR({!$Record.Total_Points__c} / 30)</expression>
+        <scale>0</scale>
+    </formulas>
     <interviewLabel>Contact Gift Reward {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Contact Gift Reward</label>
     <processMetadataValues>
@@ -28,6 +35,9 @@
         <label>Create Gift Task</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Records_1</targetReference>
+        </connector>
         <inputAssignments>
             <field>Status</field>
             <value>
@@ -49,6 +59,19 @@
         <object>Task</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
+    <recordUpdates>
+        <name>Update_Records_1</name>
+        <label>Update Records 1</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Rewards_Claimed__c</field>
+            <value>
+                <elementReference>calc_NewRewardCount</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
@@ -56,14 +79,7 @@
             <targetReference>Create_Gift_Task</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Total_Points__c</field>
-            <operator>GreaterThanOrEqualTo</operator>
-            <value>
-                <numberValue>30.0</numberValue>
-            </value>
-        </filters>
+        <filterFormula>FLOOR({!$Record.Total_Points__c} / 30) &gt; BLANKVALUE({!$Record.Rewards_Claimed__c}, 0)</filterFormula>
         <object>Contact</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
