@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description
+  >An email informing the adopter about the change in adoption status with all important information</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Adoption_status_change</name>
+    <relatedEntityType>Adoption__c</relatedEntityType>
+    <style>none</style>
+    <subject>Adoption status change</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>
