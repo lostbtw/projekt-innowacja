@@ -70,5 +70,13 @@
     <members>*</members>
         <name>ApexTrigger</name>
     </types>
+    <types>
+        <members>ShelterController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>shelterCards</members>
+        <name>LightningComponentBundle</name>
+    </types>
     <version>66.0</version>
 </Package>
