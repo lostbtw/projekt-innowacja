@@ -556,7 +556,7 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Shelter__c</tab>
-        <visibility>Hidden</visibility>
+        <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>standard-Case</tab>
