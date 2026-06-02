@@ -3,11 +3,13 @@ import getShelters from '@salesforce/apex/ShelterController.getShelters';
 
 export default class ShelterCards extends LightningElement {
     shelters = [];
+    filteredShelters = [];
+    searchKey = '';
 
     @wire(getShelters)
     wiredShelters({ data, error }) {
         if (data) {
-            this.shelters = data.map(s => {
+             const processed = data.map(s => {
                 return {
                     ...s,
 
@@ -20,9 +22,21 @@ export default class ShelterCards extends LightningElement {
                     sun: this.formatDay(s.Sunday_Open__c, s.Sunday_Close__c)
                 };
             });
+            
+            this.shelters = processed;
+            this.filteredShelters = processed;
         } else if (error) {
             console.error('ERROR:', error);
         }
+    }
+
+    
+    handleSearch(event) {
+        this.searchKey = event.target.value.toLowerCase();
+
+        this.filteredShelters = this.shelters.filter(s =>
+            s.Name.toLowerCase().includes(this.searchKey)
+        );
     }
 
     formatDay(open, close) {
