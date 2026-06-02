@@ -1,0 +1,10 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p style="font-family: Arial, sans-serif; font-size: 14px; color: #333333;">Good Morning {{{Recipient.FirstName}}} {{{Recipient.LastName}}},</p>
+
+<p style="font-family: Arial, sans-serif; font-size: 14px; color: #333333;">Status of adoption for your animal <strong>{{{Adoption__c.Name}}}</strong> has changed to <strong>{{{Adoption__c.Status__c}}}</strong></p>
+</body>
+</html>
