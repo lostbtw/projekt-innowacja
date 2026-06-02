@@ -1,5 +1,5 @@
 trigger AdoptionStatusChangeTrigger on Adoption__c (after update) {
-    
+
     EmailTemplate template = [SELECT Id FROM EmailTemplate
                               WHERE DeveloperName = 'Adoption_status_change_1780397637232'
                               LIMIT 1];
