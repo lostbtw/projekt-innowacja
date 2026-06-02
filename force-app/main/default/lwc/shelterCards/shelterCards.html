@@ -1,3 +1,21 @@
 <template>
-    
+    <lightning-card title="Shelters">
+
+        <template if:true={shelters.length}>
+            <template for:each={shelters} for:item="s">
+
+                <div key={s.Id} class="slds-box slds-m-around_small">
+                    <p><strong>{s.Name}</strong></p>
+                </div>
+
+            </template>
+        </template>
+
+        <template if:false={shelters.length}>
+            <p class="slds-p-around_medium">
+                No shelters found or loading...
+            </p>
+        </template>
+
+    </lightning-card>
 </template>
