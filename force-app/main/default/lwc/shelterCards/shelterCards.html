@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Shelters Dashboard">
+        <div class="slds-p-around_small">
+            <lightning-input
+                type="search"
+                label="Search shelters"
+                placeholder="Type shelter name..."
+                onchange={handleSearch}>
+            </lightning-input>
+        </div>
+        <div class="container">
+            <template for:each={filteredShelters} for:item="s">
+                <div key={s.Id} class="card">
+                    <h2 class="title">{s.Name}</h2>
+                    <div class="hours">
+                        <p>Mon: {s.mon}</p>
+                        <p>Tue: {s.tue}</p>
+                        <p>Wed: {s.wed}</p>
+                        <p>Thu: {s.thu}</p>
+                        <p>Fri: {s.fri}</p>
+                        <p>Sat: {s.sat}</p>
+                        <p>Sun: {s.sun}</p>
+                    </div>
+                    <template if:true={s.Closed_From__c}>
+                        <div class="closed">
+                            Closed from {s.Closed_From__c} to {s.Closed_To__c}
+                        </div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

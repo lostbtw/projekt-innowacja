@@ -37,38 +37,43 @@
         <name>CustomApplication</name>
     </types>
     <types>
-    <members>AI_Mals_UtilityBar</members>
-    <members>Case_Record_Page</members>
-    <name>FlexiPage</name>
+        <members>AI_Mals_UtilityBar</members>
+        <members>Case_Record_Page</members>
+        <name>FlexiPage</name>
     </types>
     <types>
         <members>Admin</members>
         <name>Profile</name>
     </types>
     <types>
-        <members>unfiled$public/Adoption_status_change</members>
+        <members>unfiled$public/Adoption_status_change_1780397637232</members>
         <name>EmailTemplate</name>
     </types>
     <types>
         <members>LetterHead</members>
         <name>Letterhead</name>
     </types>
-
     <types>
         <members>Contact.Total_Points__c</members>
         <members>Contact.Rewards_Claimed__c</members>
         <name>CustomField</name>
     </types>
-
     <types>
         <members>Adoption_Points_Rollup</members>
         <members>Contact_Gift_Reward</members>
         <name>Flow</name>
     </types>
-
     <types>
-    <members>*</members>
+        <members>*</members>
         <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>ShelterController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>shelterCards</members>
+        <name>LightningComponentBundle</name>
     </types>
     <version>66.0</version>
 </Package>
