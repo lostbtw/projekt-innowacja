@@ -45,15 +45,11 @@
         <name>Profile</name>
     </types>
     <types>
-        <members>unfiled$public/Adoption_status_change</members>
+        <members>unfiled$public/Adoption_status_change_1780397637232</members>
         <name>EmailTemplate</name>
     </types>
     <types>
-        <members>LetterHead</members>
-        <name>Letterhead</name>
-    </types>
-    <types>
-    <members>*</members>
+        <members>*</members>
         <name>ApexTrigger</name>
     </types>
     <version>66.0</version>

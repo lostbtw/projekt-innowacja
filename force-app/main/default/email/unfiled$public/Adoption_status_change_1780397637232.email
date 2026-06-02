@@ -1,28 +1,10 @@
 <html>
- <head>
-  <title></title>
- </head>
- <body style="height: auto; min-height: auto; margin: 0; padding: 0;">
-  <table cellpadding="0" cellspacing="0" style="background-color: #f4f4f4; padding: 20px 0;" width="100%">
-   <tbody>
-    <tr>
-     <td align="left"><img alt="salesforce-logo-png" src="{[devName:salesforcelogopng]}" style="max-width: 1621.6499999999999px" title="salesforce-logo-png" /></td>
-    </tr>
-   </tbody>
-  </table>
-  <table cellpadding="20" cellspacing="0" width="100%">
-   <tbody>
-    <tr>
-     <td><p style="font-family: Arial, sans-serif; font-size: 14px; color: #333333;">Good Morning {{{Recipient.FirstName}}} {{{Recipient.LastName}}},</p> <p style="font-family: Arial, sans-serif; font-size: 14px; color: #333333;">Status of adoption for your animal <strong>{{{Adoption__c.Name}}}</strong> has changed to <strong>{{{Adoption__c.Status__c}}}</strong></p></td>
-    </tr>
-   </tbody>
-  </table>
-  <table cellpadding="15" cellspacing="0" style="background-color: #f4f4f4; border-top: 1px solid #dddddd;" width="100%">
-   <tbody>
-    <tr>
-     <td align="left"><p style="font-family: Arial, sans-serif; font-size: 14px; color: #333333; margin: 0;">Innowacja 2026 group 2</p> <p style="font-family: Arial, sans-serif; font-size: 12px; color: #777777; margin: 5px 0 0 0;">Tel: +48 123 456 789</p> <p style="font-family: Arial, sans-serif; font-size: 12px; margin: 5px 0 0 0;"><a href="https://www.salesforce.com" style="color: #0070d2; text-decoration: none;">www.salesforce.com</a></p></td>
-    </tr>
-   </tbody>
-  </table>
- </body>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p style="font-family: Arial, sans-serif; font-size: 14px; color: #333333;">Good Morning {{{Recipient.FirstName}}} {{{Recipient.LastName}}},</p>
+
+<p style="font-family: Arial, sans-serif; font-size: 14px; color: #333333;">Status of adoption for your animal <strong>{{{Adoption__c.Name}}}</strong> has changed to <strong>{{{Adoption__c.Status__c}}}</strong></p>
+</body>
 </html>
