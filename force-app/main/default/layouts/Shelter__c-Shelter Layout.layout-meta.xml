@@ -49,6 +49,12 @@
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
             </layoutItems>
+
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Total_Adoptions__c</field>
+            </layoutItems>
+            
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Monday_Close__c</field>
