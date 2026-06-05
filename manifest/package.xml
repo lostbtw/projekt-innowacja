@@ -21,6 +21,7 @@
         <members>Animal__c</members>
         <members>Adoption__c</members>
         <members>Shelter__c</members>
+        <members>Shelter_Dashboard</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -39,6 +40,7 @@
     <types>
         <members>AI_Mals_UtilityBar</members>
         <members>Case_Record_Page</members>
+        <members>Shelter_Dashboard</members>
         <name>FlexiPage</name>
     </types>
     <types>
