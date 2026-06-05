@@ -16,6 +16,7 @@
     <tabs>Shelter__c</tabs>
     <tabs>Animal__c</tabs>
     <tabs>Adoption__c</tabs>
+    <tabs>Shelter_Dashboard</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>AI_Mals_UtilityBar</utilityBar>
 </CustomApplication>
