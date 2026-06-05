@@ -75,7 +75,12 @@
     </types>
     <types>
         <members>shelterCards</members>
+        <members>shelterMap</members>
         <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Shelter_Record_Page</members>
+        <name>FlexiPage</name>
     </types>
     <version>66.0</version>
 </Package>

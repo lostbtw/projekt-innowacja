@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title={cardTitle} icon-name="standard:location">
+
+        <template if:true={error}>
+            <div class="slds-p-around_medium slds-text-color_error">
+                {error}
+            </div>
+        </template>
+
+        <template if:true={hasMarkers}>
+            <div class="map-container">
+                <lightning-map
+                    map-markers={mapMarkers}
+                    selected-marker-value={selectedMarkerValue}
+                    zoom-level={zoomLevel}
+                    markers-title="Shelters"
+                    show-footer
+                    list-view="visible"
+                ></lightning-map>
+            </div>
+        </template>
+
+        <template if:false={hasMarkers}>
+            <template if:false={error}>
+                <div class="slds-p-around_medium slds-text-align_center">
+                    No shelters found in this city.
+                </div>
+            </template>
+        </template>
+
+    </lightning-card>
+</template>
