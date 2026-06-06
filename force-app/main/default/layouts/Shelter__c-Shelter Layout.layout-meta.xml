@@ -69,16 +69,6 @@
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
             </layoutItems>
-
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Total_Adoptions__c</field>
-            </layoutItems>
-
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Non_Virtual_Adopted_Animals__c</field>
-            </layoutItems>
             
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -115,6 +105,11 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Total_Adoptions__c</field>
+            </layoutItems>
+
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Non_Virtual_Adopted_Animals__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

@@ -22,3 +22,4 @@ trigger AnimalShelterCountTrigger on Animal__c (after insert, after update, befo
 
     ShelterCountHelper.recalculate(shelterIds, excludeAnimalIds);
 }
+

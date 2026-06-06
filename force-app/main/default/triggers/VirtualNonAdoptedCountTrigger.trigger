@@ -20,3 +20,4 @@ trigger VirtualNonAdoptedCountTrigger on Adoption__c (after insert, after update
 
     ShelterCountHelper.recalculate(shelterIds, new Set<Id>());
 }
+
