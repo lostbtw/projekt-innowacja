@@ -71,6 +71,7 @@
     </types>
     <types>
         <members>ShelterController</members>
+        <members>ShelterCountHelper</members>
         <name>ApexClass</name>
     </types>
     <types>

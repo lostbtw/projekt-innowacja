@@ -26,3 +26,4 @@ trigger AdoptionStatusChangeTrigger on Adoption__c (after update) {
         Messaging.sendEmail(emails);
     }
 }
+
