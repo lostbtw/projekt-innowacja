@@ -73,6 +73,9 @@
     <types>
         <members>ShelterController</members>
         <members>ShelterCountHelper</members>
+        <members>AdoptionStatusChangeTriggerHandler</members>
+        <members>AnimalShelterCountTriggerHandler</members>
+        <members>VirtualNonAdoptedCountTriggerHandler</members>
         <name>ApexClass</name>
     </types>
     <types>
