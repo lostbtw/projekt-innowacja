@@ -565,6 +565,10 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
+        <tab>Animal_Search</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>Animal__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>

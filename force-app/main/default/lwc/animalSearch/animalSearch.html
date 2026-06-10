@@ -1,0 +1,122 @@
+<template>
+    <div class="search-container">
+        <div class="header">
+            <h1 class="app-title">AI:Mals</h1>
+        </div>
+        
+        <div class="filters-panel">
+            <div class="filter-item">
+                <label class="filter-label">SHELTER</label>
+                <lightning-combobox
+                    name="shelter"
+                    value={selectedShelter}
+                    options={shelterOptions}
+                    onchange={handleShelterChange}
+                    variant="label-hidden"
+                    placeholder="Any"
+                ></lightning-combobox>
+            </div>
+            
+            <div class="filter-item">
+                <label class="filter-label">BREED</label>
+                <lightning-combobox
+                    name="breed"
+                    value={selectedBreed}
+                    options={breedOptions}
+                    onchange={handleBreedChange}
+                    variant="label-hidden"
+                    placeholder="Any"
+                ></lightning-combobox>
+            </div>
+            
+            <div class="filter-item">
+                <label class="filter-label">AGE FROM</label>
+                <lightning-input
+                    type="number"
+                    name="ageFrom"
+                    value={ageFrom}
+                    onchange={handleAgeFromChange}
+                    variant="label-hidden"
+                    placeholder="Min"
+                    min="0"
+                ></lightning-input>
+            </div>
+            
+            <div class="filter-item">
+                <label class="filter-label">AGE TO</label>
+                <lightning-input
+                    type="number"
+                    name="ageTo"
+                    value={ageTo}
+                    onchange={handleAgeToChange}
+                    variant="label-hidden"
+                    placeholder="Max"
+                    min="0"
+                ></lightning-input>
+            </div>
+            
+            <div class="filter-item">
+                <label class="filter-label">GENDER</label>
+                <lightning-combobox
+                    name="gender"
+                    value={selectedGender}
+                    options={genderOptions}
+                    onchange={handleGenderChange}
+                    variant="label-hidden"
+                    placeholder="Any"
+                ></lightning-combobox>
+            </div>
+            
+            <div class="filter-item search-button-container">
+                <label class="filter-label" style="visibility: hidden;">SEARCH</label>
+                <button class="search-button" onclick={handleSearch}>Search</button>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <h2>Adoptable Pets</h2>
+        </div>
+        
+        <template if:true={animals}>
+            <div class="pets-grid">
+                <template for:each={animals} for:item="animal">
+                    <div class="pet-card" key={animal.Id}>
+                        <div class="pet-image-container">
+                            <template if:true={animal.Photo__c}>
+                                <img src={animal.Photo__c} alt={animal.Name} class="pet-image" />
+                            </template>
+                            <template if:false={animal.Photo__c}>
+                                <div class="no-image">No Image</div>
+                            </template>
+                        </div>
+                        <div class="pet-info">
+                            <div class="pet-name">
+                                {animal.Name} <lightning-icon icon-name="utility:play" size="x-small" variant="brand" class="play-icon"></lightning-icon>
+                            </div>
+                            <div class="pet-details">{animal.Breed__c}</div>
+                            <div class="pet-details" style="display: flex; justify-content: center; gap: 0.75rem;">
+                                <template if:true={animal.Age__c}>
+                                    <span>{animal.Age__c} years</span>
+                                </template>
+                                <template if:true={animal.Weight__c}>
+                                    <span>{animal.Weight__c} kg</span>
+                                </template>
+                            </div>
+                            <div class="pet-details">
+                                <template if:true={animal.Shelter__r}>
+                                    {animal.Shelter__r.City__c}
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+        
+        <template if:true={noResults}>
+            <div class="no-results">
+                No pets found matching your criteria.
+            </div>
+        </template>
+    </div>
+</template>
