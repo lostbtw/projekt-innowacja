@@ -22,6 +22,7 @@
         <members>Adoption__c</members>
         <members>Shelter__c</members>
         <members>Shelter_Dashboard</members>
+        <members>Animal_Search</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -76,11 +77,13 @@
         <members>AdoptionStatusChangeTriggerHandler</members>
         <members>AnimalShelterCountTriggerHandler</members>
         <members>VirtualNonAdoptedCountTriggerHandler</members>
+        <members>AnimalSearchController</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>shelterCards</members>
         <members>shelterMap</members>
+        <members>animalSearch</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>
