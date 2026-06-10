@@ -1,0 +1,165 @@
+.search-container {
+    background-color: #f0f2f5;
+    padding: 2rem;
+    font-family: 'Salesforce Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.app-title {
+    color: #9C27B0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.filters-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+}
+
+.filter-item {
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.search-button-container {
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    align-items: stretch;
+}
+
+.search-button {
+    width: 100%;
+    background-color: white;
+    color: #9C27B0;
+    border: none;
+    border-radius: 4px;
+    padding: 0 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid #d8dde6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    height: 32px;
+    transition: all 0.2s ease;
+}
+
+.search-button:hover {
+    background-color: #fafafa;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.section-title {
+    margin-bottom: 1.5rem;
+}
+
+.section-title h2 {
+    font-size: 1.75rem;
+    color: #333;
+    font-weight: 400;
+}
+
+.pets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.pet-card {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: visible;
+    position: relative;
+    padding-top: 15px;
+}
+
+.pet-image-container {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    z-index: 0;
+}
+
+.pet-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.no-image {
+    width: 100%;
+    height: 100%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.pet-info {
+    background-color: white;
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    text-align: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 50% 20px;
+    border-top-right-radius: 50% 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    position: relative;
+    top: -20px;
+    z-index: 1;
+    min-height: 120px;
+}
+
+.pet-name {
+    color: #9C27B0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.play-icon {
+    --sds-c-icon-color-foreground-default: #9C27B0;
+}
+
+.pet-details {
+    color: #000000;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.no-results {
+    font-size: 1.2rem;
+    color: #666;
+    padding: 2rem 0;
+}
