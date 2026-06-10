@@ -5,4 +5,3 @@ trigger AdoptionStatusChangeTrigger on Adoption__c (after update) {
         handler.afterUpdate(Trigger.new, Trigger.oldMap);
     }
 }
-
