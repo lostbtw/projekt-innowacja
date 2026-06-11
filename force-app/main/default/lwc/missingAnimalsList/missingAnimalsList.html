@@ -1,0 +1,57 @@
+<template>
+    <lightning-card title="Missing Animals" icon-name="standard:search">
+        <div class="slds-m-around_medium">
+
+            <lightning-layout class="slds-m-bottom_medium">
+                <lightning-layout-item size="12" small-device-size="8" medium-device-size="4" class="slds-p-right_small">
+                    <lightning-input 
+                        type="number" 
+                        label="Days missing (dayDelta)" 
+                        value={dayDelta} 
+                        onchange={handleDayDeltaChange}
+                        placeholder="e.g., 7">
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item class="button-wrapper">
+                    <lightning-button 
+                        label="Fetch" 
+                        variant="brand" 
+                        onclick={handleSearch}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <template if:true={hasSearched}>
+                <template if:true={animals.length}>
+                    <div class="slds-grid slds-wrap slds-gutters">
+                        <template for:each={animals} for:item="animal">
+                            <div key={animal.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-m-bottom_medium">
+                                <article class="slds-card slds-card_boundary custom-card">
+                                    <div class="card-image-container">
+                                        <img src={animal.imageUrl} alt={animal.name} class="animal-image"/>
+                                    </div>
+                                    <div class="slds-p-around_small">
+                                        <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
+                                            <strong>{animal.name}</strong>
+                                        </h2>
+                                        <p class="slds-text-body_regular slds-text-color_weak">ID: {animal.id}</p>
+                                        <p class="slds-text-body_regular">Missing Date: {animal.missingDate}</p>
+                                    </div>
+                                </article>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template if:false={animals.length}>
+                    <div class="slds-illustration slds-illustration_small slds-m-top_large">
+                        <div class="slds-text-longform">
+                            <h3 class="slds-text-heading_small">No results</h3>
+                            <p class="slds-text-body_regular">No missing animals found.</p>
+                        </div>
+                    </div>
+                </template>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
