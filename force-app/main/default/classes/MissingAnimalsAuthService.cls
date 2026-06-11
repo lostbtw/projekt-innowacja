@@ -8,7 +8,7 @@ public with sharing class MissingAnimalsAuthService {
   public class AuthException extends Exception {
   }
 
-  public class AuthTocken {
+  public class AuthToken {
     public String access_token { get; set; }
     public String instance_url { get; set; }
     public Long issued_at { get; set; }
