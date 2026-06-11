@@ -3,7 +3,7 @@ public with sharing class MissingAnimalsAuthService {
   private static final String GRANT_TYPE = 'client_credentials';
   private static final String DEFAULT_CONFIG = 'Default';
 
-  public static AuthTocken cachedTocken;
+  public static AuthToken cachedTocken;
 
   public class AuthException extends Exception {
   }
