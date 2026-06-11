@@ -37,6 +37,7 @@
     <tabs>Animal_Search</tabs>
     <tabs>Adoption__c</tabs>
     <tabs>Shelter_Dashboard</tabs>
+    <tabs>missingAnimalsList</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>AI_Mals_UtilityBar</utilityBar>
 </CustomApplication>
