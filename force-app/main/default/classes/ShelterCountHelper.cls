@@ -1,4 +1,6 @@
 public class ShelterCountHelper {
+    public static Boolean isCalculating = false;
+
     public static void recalculate(Set<Id> shelterIds, Set<Id> excludeAnimalIds) {
         if (shelterIds.isEmpty()) return;
 
@@ -79,6 +81,11 @@ public class ShelterCountHelper {
                 Total_Adoptions__c = totalAdoptionsPerShelter.get(shelterId)
             ));
         }
-        update toUpdate;
+        isCalculating = true;
+        try {
+            update toUpdate;
+        } finally {
+            isCalculating = false;
+        }
     }
 }
