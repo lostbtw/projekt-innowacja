@@ -32,8 +32,8 @@
         <name>RecordType</name>
     </types>
     <types>
-        <members>Shetler__c.Validate_Closed_Date</members>
-        <members>Shetler__c.Validate_Open_Close_Times</members>
+        <members>Shelter__c.Validate_Closed_Date</members>
+        <members>Shelter__c.Validate_Open_Close_Times</members>
         <members>Adoption__c.Amount_Min_Value</members>
         <name>ValidationRule</name>
     </types>
