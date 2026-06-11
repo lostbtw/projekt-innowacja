@@ -23,6 +23,7 @@
         <members>Shelter__c</members>
         <members>Shelter_Dashboard</members>
         <members>Animal_Search</members>
+        <members>missingAnimalsList</members>
         <name>CustomTab</name>
     </types>
     <types>
@@ -85,6 +86,7 @@
         <members>shelterCards</members>
         <members>shelterMap</members>
         <members>animalSearch</members>
+        <members>missingAnimalsList</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>

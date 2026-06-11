@@ -10,6 +10,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>AnimalController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>AnimalSearchController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -603,6 +607,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Shelter__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>missingAnimalsList</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
