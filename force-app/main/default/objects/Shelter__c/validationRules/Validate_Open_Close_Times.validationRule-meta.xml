@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validate_Open_Close_Times</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(Monday_Close__c &lt;=  Monday_Open__c,  Tuesday_Close__c &lt;= Tuesday_Open__c, Wednesday_Close__c &lt;= Wednesday_Open__c, Thursday_Close__c &lt;= Thursday_Open__c, Friday_Close__c &lt;= Friday_Open__c, Saturday_Close__c &lt;= Saturday_Open__c, Sunday_Close__c &lt;= Sunday_Open__c)</errorConditionFormula>
+    <errorMessage>Opening time must be earlier than closing time</errorMessage>
+</ValidationRule>
