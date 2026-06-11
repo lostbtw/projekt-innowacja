@@ -72,6 +72,7 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>AnimalController</members>
         <members>ShelterController</members>
         <members>ShelterCountHelper</members>
         <members>AdoptionStatusChangeTriggerHandler</members>
