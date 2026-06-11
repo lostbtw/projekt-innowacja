@@ -1,28 +1,109 @@
-/**
- * This class contains unit tests for validating the behavior of Apex classes
- * and triggers.
- *
- * Unit tests are class methods that verify whether a particular piece
- * of code is working properly. Unit test methods take no arguments,
- * commit no data to the database, and are flagged with the testMethod
- * keyword in the method definition.
- *
- * All test methods in an org are executed whenever Apex code is deployed
- * to a production org to confirm correctness, ensure code
- * coverage, and prevent regressions. All Apex classes are
- * required to have at least 75% code coverage in order to be deployed
- * to a production org. In addition, all triggers must have some code coverage.
- *
- * The @isTest class annotation indicates this class only contains test
- * methods. Classes defined with the @isTest annotation do not count against
- * the org size limit for all Apex scripts.
- *
- * See the Apex Language Reference for more information about Testing and Code Coverage.
- */
-@isTest
+@IsTest
 private class MissingAnimalsAuthServiceTest {
-  @isTest
-  static void myUnitTest() {
-    // TO DO: implement unit test
+  private class SuccessMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+      HttpResponse res = new HttpResponse();
+      res.setStatusCode(200);
+      res.setHeader('Content-Type', 'application/json');
+      res.setBody(
+        JSON.serialize(
+          new Map<String, Object>{
+            'access_token' => 'mock_access_token_abc123',
+            'instance_url' => 'https://my-sandbox.salesforce.com',
+            'token_type' => 'Bearer',
+            'issued_at' => String.valueOf(System.currentTimeMillis())
+          }
+        )
+      );
+      return res;
+    }
+  }
+
+  private class ErrorMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+      HttpResponse res = new HttpResponse();
+      res.setStatusCode(400);
+      res.setHeader('Content-Type', 'application/json');
+      res.setBody(
+        '{"error":"invalid_client","error_description":"invalid client credentials"}'
+      );
+      return res;
+    }
+  }
+
+  @IsTest
+  static void testSuccessfulTokenRetrieval() {
+    Test.setMock(HttpCalloutMock.class, new SuccessMock());
+
+    Test.startTest();
+    MissingAnimalsAuthService.AuthToken token = MissingAnimalsAuthService.getAccessToken();
+    Test.stopTest();
+
+    System.assertNotEquals(null, token, 'Token should not be null');
+    System.assertEquals('mock_access_token_abc123', token.accessToken);
+    System.assertEquals('https://my-sandbox.salesforce.com', token.instanceUrl);
+    System.assertEquals('Bearer', token.tokenType);
+    System.assertNotEquals(null, token.issuedAt);
+  }
+
+  @IsTest
+  static void testTokenIsCachedWithinTransaction() {
+    Test.setMock(HttpCalloutMock.class, new SuccessMock());
+
+    Test.startTest();
+    MissingAnimalsAuthService.AuthToken first = MissingAnimalsAuthService.getAccessToken();
+    MissingAnimalsAuthService.AuthToken second = MissingAnimalsAuthService.getAccessToken();
+    Test.stopTest();
+
+    System.assert(first === second, 'Second call should return cached token');
+  }
+
+  @IsTest
+  static void testClearCachedTokenForcesNewRequest() {
+    Test.setMock(HttpCalloutMock.class, new SuccessMock());
+
+    Test.startTest();
+    MissingAnimalsAuthService.AuthToken first = MissingAnimalsAuthService.getAccessToken();
+    MissingAnimalsAuthService.clearCachedToken();
+    MissingAnimalsAuthService.AuthToken second = MissingAnimalsAuthService.getAccessToken();
+    Test.stopTest();
+
+    System.assert(
+      first !== second,
+      'After clearing cache, a new token should be fetched'
+    );
+    System.assertEquals(first.accessToken, second.accessToken);
+  }
+
+  @IsTest
+  static void testFailedTokenRequestThrowsException() {
+    Test.setMock(HttpCalloutMock.class, new ErrorMock());
+
+    Test.startTest();
+    try {
+      MissingAnimalsAuthService.getAccessToken();
+      System.assert(false, 'Should have thrown AuthException');
+    } catch (MissingAnimalsAuthService.AuthException e) {
+      System.assert(
+        e.getMessage().contains('400'),
+        'Exception should contain status code'
+      );
+    }
+    Test.stopTest();
+  }
+
+  @IsTest
+  static void testMissingConfigThrowsException() {
+    Test.startTest();
+    try {
+      MissingAnimalsAuthService.getAccessToken('NonExistentConfig');
+      System.assert(false, 'Should have thrown AuthException');
+    } catch (MissingAnimalsAuthService.AuthException e) {
+      System.assert(
+        e.getMessage().contains('Missing authentication configuration'),
+        'Exception should mention missing config'
+      );
+    }
+    Test.stopTest();
   }
 }
