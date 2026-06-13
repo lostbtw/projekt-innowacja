@@ -87,5 +87,17 @@
         <members>Shelter_Record_Page</members>
         <name>FlexiPage</name>
     </types>
+    <types>
+        <members>MissingAnimals_OAuth</members>
+        <name>ExternalCredential</name>
+    </types>
+    <types>
+        <members>MissingAnimals</members>
+        <name>NamedCredential</name>
+    </types>
+    <types>
+        <members>MissingAnimals_API_Access</members>
+        <name>PermissionSet</name>
+    </types>
     <version>66.0</version>
 </Package>
