@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description
-  >Group Permission Sets for integration with external API</description>
+    <description>Group Permission Sets for integration with external API</description>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Integration API Access</label>
     <permissionSets>MissingAnimals_API_Access</permissionSets>
