@@ -1,18 +1,29 @@
-import { LightningElement, wire } from 'lwc';
+import { LightningElement, track } from 'lwc';
 import getShelters from '@salesforce/apex/ShelterController.getShelters';
 
 export default class ShelterCards extends LightningElement {
-    shelters = [];
-    filteredShelters = [];
+    @track shelters = [];
     searchKey = '';
+    searchInput = '';
+    pageSize = 18;
+    pageNumber = 1;
+    isLoading = false;
 
-    @wire(getShelters)
-    wiredShelters({ data, error }) {
-        if (data) {
-             const processed = data.map(s => {
+    connectedCallback() {
+        this.fetchShelters();
+    }
+
+    fetchShelters() {
+        this.isLoading = true;
+        getShelters({ 
+            searchKey: this.searchKey, 
+            pageSize: this.pageSize, 
+            pageNumber: this.pageNumber 
+        })
+        .then(data => {
+            const processed = data.map(s => {
                 return {
                     ...s,
-
                     mon: this.formatDay(s.Monday_Open__c, s.Monday_Close__c),
                     tue: this.formatDay(s.Tuesday_Open__c, s.Tuesday_Close__c),
                     wed: this.formatDay(s.Wednesday_Open__c, s.Wednesday_Close__c),
@@ -22,36 +33,57 @@ export default class ShelterCards extends LightningElement {
                     sun: this.formatDay(s.Sunday_Open__c, s.Sunday_Close__c)
                 };
             });
-            
             this.shelters = processed;
-            this.filteredShelters = processed;
-        } else if (error) {
+        })
+        .catch(error => {
             console.error('ERROR:', error);
+            this.shelters = [];
+        })
+        .finally(() => {
+            this.isLoading = false;
+        });
+    }
+
+    handleInputChange(event) {
+        this.searchInput = event.target.value;
+    }
+
+    handleSearch() {
+        this.searchKey = this.searchInput;
+        this.pageNumber = 1;
+        this.fetchShelters();
+    }
+
+    handlePrevious() {
+        if (this.pageNumber > 1) {
+            this.pageNumber--;
+            this.fetchShelters();
         }
     }
 
-    
-    handleSearch(event) {
-        this.searchKey = event.target.value.toLowerCase();
+    handleNext() {
+        this.pageNumber++;
+        this.fetchShelters();
+    }
 
-        this.filteredShelters = this.shelters.filter(s =>
-            s.Name.toLowerCase().includes(this.searchKey)
-        );
+    get disablePrevious() {
+        return this.pageNumber <= 1;
+    }
+
+    get disableNext() {
+        return this.shelters.length < this.pageSize;
     }
 
     formatDay(open, close) {
         if (!open || !close) {
             return 'Closed';
         }
-
         return `${this.formatTime(open)} - ${this.formatTime(close)}`;
     }
 
     formatTime(ms) {
         if (ms === null || ms === undefined) return '';
-
         const date = new Date(ms);
-
         return date.toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit'

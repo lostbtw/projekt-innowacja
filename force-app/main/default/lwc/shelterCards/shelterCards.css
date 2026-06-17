@@ -33,3 +33,25 @@
     border-radius: 6px;
     font-weight: bold;
 }
+
+.search-container {
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-input-col {
+    flex: 3;
+}
+
+.search-button-col {
+    flex: 1;
+    transform: translateY(-1px);
+}
+
+.pagination-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
