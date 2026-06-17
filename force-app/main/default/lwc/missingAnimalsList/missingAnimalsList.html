@@ -21,34 +21,43 @@
                 </lightning-layout-item>
             </lightning-layout>
 
-            <template if:true={hasSearched}>
-                <template if:true={animals.length}>
-                    <div class="slds-grid slds-wrap slds-gutters">
-                        <template for:each={animals} for:item="animal">
-                            <div key={animal.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-m-bottom_medium">
-                                <article class="slds-card slds-card_boundary custom-card">
-                                    <div class="card-image-container">
-                                        <img src={animal.imageUrl} alt={animal.name} class="animal-image"/>
+            <template if:true={isLoading}>
+                <div class="slds-is-relative slds-p-around_large">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:false={isLoading}>
+                <template if:true={hasSearched}>
+                    <template if:true={animals.length}>
+                        <div class="pets-grid">
+                            <template for:each={animals} for:item="animal">
+                                <c-animal-card 
+                                    key={animal.id} 
+                                    animal-name={animal.name}
+                                    image-url={animal.imageUrl}
+                                    is-clickable="false">
+                                    
+                                    <div slot="details">
+                                        <div class="pet-details missing-id">
+                                            <strong>ID:</strong> {animal.id}
+                                        </div>
+                                        <div class="pet-details">
+                                            <strong>Missing Date:</strong> {animal.missingDate}
+                                        </div>
                                     </div>
-                                    <div class="slds-p-around_small">
-                                        <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
-                                            <strong>{animal.name}</strong>
-                                        </h2>
-                                        <p class="slds-text-body_regular slds-text-color_weak">ID: {animal.id}</p>
-                                        <p class="slds-text-body_regular">Missing Date: {animal.missingDate}</p>
-                                    </div>
-                                </article>
-                            </div>
-                        </template>
-                    </div>
-                </template>
-                <template if:false={animals.length}>
-                    <div class="slds-illustration slds-illustration_small slds-m-top_large">
-                        <div class="slds-text-longform">
-                            <h3 class="slds-text-heading_small">No results</h3>
-                            <p class="slds-text-body_regular">No missing animals found.</p>
+                                </c-animal-card>
+                            </template>
                         </div>
-                    </div>
+                    </template>
+                    <template if:false={animals.length}>
+                        <div class="slds-illustration slds-illustration_small slds-m-top_large">
+                            <div class="slds-text-longform">
+                                <h3 class="slds-text-heading_small">No results</h3>
+                                <p class="slds-text-body_regular">No missing animals found.</p>
+                            </div>
+                        </div>
+                    </template>
                 </template>
             </template>
 

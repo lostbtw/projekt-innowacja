@@ -4,9 +4,14 @@ export default class AnimalCard extends LightningElement {
     @api animalName;
     @api imageUrl;
     @api isClickable = false;
+    imageError = false;
 
     get hasImage() {
-        return !!this.imageUrl;
+        return !!this.imageUrl && !this.imageError && String(this.imageUrl).startsWith('http');
+    }
+
+    handleImageError() {
+        this.imageError = true;
     }
 
     get titleClass() {

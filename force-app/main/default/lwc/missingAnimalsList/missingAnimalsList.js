@@ -1,30 +1,12 @@
 import { LightningElement, track } from 'lwc';
+import getAnimalsWithImages from '@salesforce/apex/AnimalController.getAnimalsWithImages';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class MissingAnimalsList extends LightningElement {
     dayDelta;
     @track animals = [];
     hasSearched = false;
-
-    mockData = [
-        {
-            id: "ANO-0001",
-            missingDate: "2025-05-20",
-            name: "Mr. Whiskers",
-            imageUrl: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Tabby_cat_with_blue_eyes-3336579.jpg"
-        },
-        {
-            id: "ANO-0002",
-            missingDate: "2025-05-18",
-            name: "Sir Barkalot",
-            imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/69/June_odd-eyed-cat_cropped.jpg"
-        },
-        {
-            id: "ANO-0003",
-            missingDate: "2025-05-10",
-            name: "Bugs",
-            imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/87/20231125_housecat_south_meadows_PD100306.jpg"
-        }
-    ];
+    isLoading = false;
 
     handleDayDeltaChange(event) {
         this.dayDelta = event.target.value;
@@ -32,14 +14,35 @@ export default class MissingAnimalsList extends LightningElement {
 
     handleSearch() {
         this.hasSearched = true;
+        this.isLoading = true;
         
-        // TODO: 
-        // Placeholder for future Apex integration
-        // getAnimalsWithImages({ dayDelta: this.dayDelta })
-        //     .then(result => { this.animals = result; })
-        //     .catch(error => { console.error('Fetch error', error); });
+        const delta = this.dayDelta ? parseInt(this.dayDelta, 10) : null;
 
-        this.animals = this.mockData;
+        getAnimalsWithImages({ dayDelta: delta })
+            .then(result => { 
+                this.animals = result; 
+            })
+            .catch(error => { 
+                console.error('Fetch error', error); 
+                let errorMessage = 'An error occurred while fetching animals.';
+                if (error && error.body && error.body.message) {
+                    errorMessage = error.body.message;
+                }
+                this.showToast('Error', errorMessage, 'error');
+                this.animals = [];
+            })
+            .finally(() => {
+                this.isLoading = false;
+            });
     }
 
+    showToast(title, message, variant) {
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: title,
+                message: message,
+                variant: variant
+            })
+        );
+    }
 }
