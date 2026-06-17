@@ -25,6 +25,10 @@ export default class AnimalSearch extends LightningElement {
 
     @track animals = [];
     @track noResults = false;
+    
+    pageSize = 20;
+    pageNumber = 1;
+    isLoading = false;
 
     connectedCallback() {
         this.fetchOptions();
@@ -82,7 +86,28 @@ export default class AnimalSearch extends LightningElement {
             this.showToast('Error', 'Age From cannot be greater than Age To.', 'error');
             return;
         }
+        this.pageNumber = 1;
         this.performSearch();
+    }
+
+    handlePrevious() {
+        if (this.pageNumber > 1) {
+            this.pageNumber--;
+            this.performSearch();
+        }
+    }
+
+    handleNext() {
+        this.pageNumber++;
+        this.performSearch();
+    }
+
+    get disablePrevious() {
+        return this.pageNumber <= 1;
+    }
+
+    get disableNext() {
+        return this.animals.length < this.pageSize;
     }
 
     showToast(title, message, variant) {
@@ -96,12 +121,15 @@ export default class AnimalSearch extends LightningElement {
     }
 
     performSearch() {
+        this.isLoading = true;
         searchAnimals({
             shelterId: this.selectedShelter,
             breed: this.selectedBreed,
             ageFrom: this.ageFrom ? Number(this.ageFrom) : null,
             ageTo: this.ageTo ? Number(this.ageTo) : null,
-            gender: this.selectedGender
+            gender: this.selectedGender,
+            pageSize: this.pageSize,
+            pageNumber: this.pageNumber
         })
         .then(result => {
             this.animals = result;
@@ -111,6 +139,9 @@ export default class AnimalSearch extends LightningElement {
             console.error('Error searching animals:', error);
             this.animals = [];
             this.noResults = true;
+        })
+        .finally(() => {
+            this.isLoading = false;
         });
     }
 }
