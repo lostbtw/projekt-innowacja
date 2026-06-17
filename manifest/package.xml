@@ -107,5 +107,9 @@
         <members>MissingAnimals_API_Access</members>
         <name>PermissionSet</name>
     </types>
+    <types>
+        <members>Integration_API_Access</members>
+        <name>PermissionSetGroup</name>
+    </types>
     <version>66.0</version>
 </Package>
