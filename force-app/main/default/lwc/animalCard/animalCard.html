@@ -1,0 +1,22 @@
+<template>
+    <div class="pet-card">
+        <div class="pet-image-container">
+            <template if:true={hasImage}>
+                <img src={imageUrl} alt={animalName} class="pet-image" />
+            </template>
+            <template if:false={hasImage}>
+                <div class="no-image">No Image</div>
+            </template>
+        </div>
+        <div class="pet-info">
+            <div class={titleClass} onclick={handleTitleClick}>
+                {animalName} 
+                <slot name="title-icon"></slot>
+            </div>
+            
+            <div class="details-container">
+                <slot name="details"></slot>
+            </div>
+        </div>
+    </div>
+</template>

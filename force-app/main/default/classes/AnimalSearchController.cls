@@ -26,7 +26,8 @@ public with sharing class AnimalSearchController {
     }
 
     @AuraEnabled(cacheable=true)
-    public static List<Animal__c> searchAnimals(String shelterId, String breed, Decimal ageFrom, Decimal ageTo, String gender) {
+    public static List<Animal__c> searchAnimals(String shelterId, String breed, Decimal ageFrom, Decimal ageTo, String gender, Integer pageSize, Integer pageNumber) {
+        Integer offset = (pageNumber - 1) * pageSize;
         String query = 'SELECT Id, Name, Breed__c, Age__c, Weight__c, Sex__c, Photo__c, Shelter__r.City__c, Shelter__r.State__c FROM Animal__c WHERE Status__c = \'Available\' ';
 
         if (String.isNotBlank(shelterId)) {
@@ -46,7 +47,7 @@ public with sharing class AnimalSearchController {
             query += 'AND Age__c <= :ageTo ';
         }
 
-        query += 'ORDER BY Name ASC';
+        query += 'ORDER BY Name ASC LIMIT :pageSize OFFSET :offset';
 
         return Database.query(query);
     }
