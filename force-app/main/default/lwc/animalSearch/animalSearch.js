@@ -1,10 +1,11 @@
 import { LightningElement, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from 'lightning/navigation';
 import getShelterOptions from '@salesforce/apex/AnimalSearchController.getShelterOptions';
 import getBreedOptions from '@salesforce/apex/AnimalSearchController.getBreedOptions';
 import searchAnimals from '@salesforce/apex/AnimalSearchController.searchAnimals';
 
-export default class AnimalSearch extends LightningElement {
+export default class AnimalSearch extends NavigationMixin(LightningElement) {
     @track shelterOptions = [{ label: 'Any', value: '' }];
     @track breedOptions = [{ label: 'Any', value: '' }];
     
@@ -121,9 +122,17 @@ export default class AnimalSearch extends LightningElement {
     }
 
     handleAnimalClick(event) {
-        // Stage 3 implementation will go here
-        const animal = event.detail;
-        console.log('Clicked animal:', animal);
+        const recordId = event.currentTarget.dataset.id;
+        if (recordId) {
+            this[NavigationMixin.Navigate]({
+                type: 'standard__recordPage',
+                attributes: {
+                    recordId: recordId,
+                    objectApiName: 'Animal__c',
+                    actionName: 'view'
+                }
+            });
+        }
     }
 
     performSearch() {
