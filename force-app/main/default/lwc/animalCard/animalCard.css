@@ -1,0 +1,73 @@
+.pet-card {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: visible;
+    position: relative;
+    padding-top: 15px;
+}
+
+.pet-image-container {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    z-index: 0;
+}
+
+.pet-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.no-image {
+    width: 100%;
+    height: 100%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.pet-info {
+    background-color: white;
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    text-align: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 50% 20px;
+    border-top-right-radius: 50% 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    position: relative;
+    top: -20px;
+    z-index: 1;
+    min-height: 120px;
+}
+
+.pet-name {
+    color: #9C27B0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.clickable-name {
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.clickable-name:hover {
+    opacity: 0.8;
+}
+
+

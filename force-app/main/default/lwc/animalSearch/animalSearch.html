@@ -83,19 +83,17 @@
         <template if:true={animals}>
             <div class="pets-grid">
                 <template for:each={animals} for:item="animal">
-                    <div class="pet-card" key={animal.Id}>
-                        <div class="pet-image-container">
-                            <template if:true={animal.Photo__c}>
-                                <img src={animal.Photo__c} alt={animal.Name} class="pet-image" />
-                            </template>
-                            <template if:false={animal.Photo__c}>
-                                <div class="no-image">No Image</div>
-                            </template>
-                        </div>
-                        <div class="pet-info">
-                            <div class="pet-name">
-                                {animal.Name} <lightning-icon icon-name="utility:play" size="x-small" variant="brand" class="play-icon"></lightning-icon>
-                            </div>
+                    <c-animal-card 
+                        key={animal.Id} 
+                        animal-name={animal.Name}
+                        image-url={animal.Photo__c}
+                        is-clickable="true"
+                        data-id={animal.Id}
+                        onanimalclick={handleAnimalClick}>
+                        
+                        <lightning-icon slot="title-icon" icon-name="utility:play" size="x-small" variant="brand" class="play-icon"></lightning-icon>
+                        
+                        <div slot="details">
                             <div class="pet-details">{animal.Breed__c}</div>
                             <div class="pet-details pet-stats">
                                 <template if:true={animal.Age__c}>
@@ -105,13 +103,11 @@
                                     <span>{animal.Weight__c} kg</span>
                                 </template>
                             </div>
-                            <div class="pet-details">
-                                <template if:true={animal.Shelter__r}>
-                                    {animal.Shelter__r.City__c}
-                                </template>
-                            </div>
+                            <template if:true={animal.Shelter__r}>
+                                <div class="pet-details">{animal.Shelter__r.City__c}</div>
+                            </template>
                         </div>
-                    </div>
+                    </c-animal-card>
                 </template>
             </div>
         </template>

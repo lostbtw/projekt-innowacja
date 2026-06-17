@@ -120,6 +120,12 @@ export default class AnimalSearch extends LightningElement {
         );
     }
 
+    handleAnimalClick(event) {
+        // Stage 3 implementation will go here
+        const animal = event.detail;
+        console.log('Clicked animal:', animal);
+    }
+
     performSearch() {
         this.isLoading = true;
         searchAnimals({
