@@ -19,37 +19,137 @@
                         onclick={handleSearch}>
                     </lightning-button>
                 </lightning-layout-item>
+                
+                <lightning-layout-item alignment-bump="left" class="button-wrapper">
+                    <lightning-button 
+                        label="Report Missing Animal" 
+                        variant="brand" 
+                        icon-name="utility:add"
+                        onclick={openAddModal}>
+                    </lightning-button>
+                </lightning-layout-item>
             </lightning-layout>
 
-            <template if:true={hasSearched}>
-                <template if:true={animals.length}>
-                    <div class="slds-grid slds-wrap slds-gutters">
-                        <template for:each={animals} for:item="animal">
-                            <div key={animal.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-m-bottom_medium">
-                                <article class="slds-card slds-card_boundary custom-card">
-                                    <div class="card-image-container">
-                                        <img src={animal.imageUrl} alt={animal.name} class="animal-image"/>
+            <template if:true={isLoading}>
+                <div class="slds-is-relative slds-p-around_large">
+                    <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <template if:false={isLoading}>
+                <template if:true={hasSearched}>
+                    <template if:true={animals.length}>
+                        <div class="pets-grid">
+                            <template for:each={animals} for:item="animal">
+                                <c-animal-card 
+                                    key={animal.id} 
+                                    animal-name={animal.name}
+                                    image-url={animal.imageUrl}
+                                    is-clickable="true"
+                                    data-id={animal.id}
+                                    onanimalclick={handleAnimalClick}>
+                                    
+                                    <lightning-icon slot="title-icon" icon-name="utility:play" size="x-small" class="play-icon"></lightning-icon>
+                                    
+                                    <div slot="details">
+                                        <div class="pet-details missing-id">
+                                            <strong>ID:</strong> {animal.id}
+                                        </div>
+                                        <div class="pet-details">
+                                            <strong>Missing Date:</strong> {animal.missingDate}
+                                        </div>
                                     </div>
-                                    <div class="slds-p-around_small">
-                                        <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
-                                            <strong>{animal.name}</strong>
-                                        </h2>
-                                        <p class="slds-text-body_regular slds-text-color_weak">ID: {animal.id}</p>
-                                        <p class="slds-text-body_regular">Missing Date: {animal.missingDate}</p>
-                                    </div>
-                                </article>
-                            </div>
-                        </template>
-                    </div>
-                </template>
-                <template if:false={animals.length}>
-                    <div class="slds-illustration slds-illustration_small slds-m-top_large">
-                        <div class="slds-text-longform">
-                            <h3 class="slds-text-heading_small">No results</h3>
-                            <p class="slds-text-body_regular">No missing animals found.</p>
+                                </c-animal-card>
+                            </template>
                         </div>
-                    </div>
+                    </template>
+                    <template if:false={animals.length}>
+                        <div class="slds-illustration slds-illustration_small slds-m-top_large">
+                            <div class="slds-text-longform">
+                                <h3 class="slds-text-heading_small">No results</h3>
+                                <p class="slds-text-body_regular">No missing animals found.</p>
+                            </div>
+                        </div>
+                    </template>
                 </template>
+            </template>
+
+            <template if:true={isModalOpen}>
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Update Status</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <p>Are you sure you want to mark <strong>{selectedAnimalName}</strong> as found?</p>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={confirmFound}>Yes, Mark as Found</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+            </template>
+
+            <template if:true={isAddModalOpen}>
+                <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeAddModal}>
+                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 class="slds-modal__title slds-hyphenate">Report Missing Animal</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <div class="slds-grid slds-wrap slds-gutters">
+                                <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                                    <h3 class="slds-text-heading_small slds-m-bottom_x-small">Animal Details</h3>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input label="Name" name="name" value={newAnimal.name} onchange={handleAddInputChange} required></lightning-input>
+                                    <lightning-input label="Breed" name="breed" value={newAnimal.breed} onchange={handleAddInputChange}></lightning-input>
+                                    <lightning-input type="number" label="Age" name="age" value={newAnimal.age} onchange={handleAddInputChange}></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input label="Size" name="size" value={newAnimal.size} onchange={handleAddInputChange}></lightning-input>
+                                    <lightning-input type="url" label="Image URL" name="imageUrl" value={newAnimal.imageUrl} onchange={handleAddInputChange}></lightning-input>
+                                    <lightning-textarea label="Unique Features" name="uniqueFeatures" value={newAnimal.uniqueFeatures} onchange={handleAddInputChange}></lightning-textarea>
+                                </div>
+                                
+                                <div class="slds-col slds-size_1-of-1 slds-m-top_medium slds-m-bottom_small">
+                                    <h3 class="slds-text-heading_small slds-m-bottom_x-small">Report Details</h3>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <lightning-input type="datetime" label="Disappearance Date" name="disappearanceDate" value={newAnimal.disappearanceDate} onchange={handleAddInputChange} required></lightning-input>
+                                    <lightning-textarea label="Description" name="description" value={newAnimal.description} onchange={handleAddInputChange} required></lightning-textarea>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <div class="slds-text-color_weak slds-m-bottom_xxx-small slds-text-body_small slds-m-top_xxx-small">Location (Address OR Coordinates)</div>
+                                    <lightning-input label="Address" name="address" value={newAnimal.address} onchange={handleAddInputChange}></lightning-input>
+                                    <div class="slds-grid slds-gutters">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input type="number" step="any" label="Latitude" name="disappearancePlaceLatitude" value={newAnimal.disappearancePlaceLatitude} onchange={handleAddInputChange}></lightning-input>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input type="number" step="any" label="Longitude" name="disappearancePlaceLongitude" value={newAnimal.disappearancePlaceLongitude} onchange={handleAddInputChange}></lightning-input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <button class="slds-button slds-button_neutral" onclick={closeAddModal}>Cancel</button>
+                            <button class="slds-button slds-button_brand" onclick={submitNewAnimal}>Submit Report</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
             </template>
 
         </div>

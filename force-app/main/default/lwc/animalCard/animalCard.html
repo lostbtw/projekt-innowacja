@@ -2,7 +2,7 @@
     <div class="pet-card">
         <div class="pet-image-container">
             <template if:true={hasImage}>
-                <img src={imageUrl} alt={animalName} class="pet-image" />
+                <img src={imageUrl} alt={animalName} class="pet-image" onerror={handleImageError} />
             </template>
             <template if:false={hasImage}>
                 <div class="no-image">No Image</div>
