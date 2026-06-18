@@ -48,7 +48,11 @@ public with sharing class AdoptionStatusChangeTriggerHandler implements ITrigger
     }
 
     if (!emails.isEmpty()) {
-      Messaging.sendEmail(emails);
+      try {
+        Messaging.sendEmail(emails);
+      } catch (Exception e) {
+        System.debug('Trigger Email send failed due to org limits, but status changed successfully: ' + e.getMessage());
+      }
     }
   }
 
