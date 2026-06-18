@@ -71,7 +71,9 @@
         <name>Flow</name>
     </types>
     <types>
-        <members>*</members>
+        <members>AdoptionTrigger</members>
+        <members>AnimalShelterCountTrigger</members>
+        <members>ShelterFieldProtectionTrigger</members>
         <name>ApexTrigger</name>
     </types>
     <types>
