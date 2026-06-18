@@ -19,3 +19,7 @@
 .missing-id {
     margin-top: 0.5rem;
 }
+
+.play-icon {
+    --sds-c-icon-color-foreground-default: #9C27B0;
+}
