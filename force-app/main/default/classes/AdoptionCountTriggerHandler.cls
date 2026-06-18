@@ -99,6 +99,11 @@ public with sharing class AdoptionCountTriggerHandler implements ITriggerHandler
       );
     }
 
-    update sheltersToUpdate;
+    ShelterCountHelper.isCalculating = true;
+    try {
+      update sheltersToUpdate;
+    } finally {
+      ShelterCountHelper.isCalculating = false;
+    }
   }
 }
