@@ -1,7 +1,23 @@
-public with sharing class AdoptionStatusChangeTriggerHandler {
+public with sharing class AdoptionStatusChangeTriggerHandler implements ITriggerHandler {
+  public void beforeInsert(List<SObject> newList) {
+  }
+
+  public void afterInsert(List<SObject> newList, Map<Id, SObject> newMap) {
+  }
+
+  public void beforeUpdate(
+    List<SObject> newList,
+    Map<Id, SObject> newMap,
+    List<SObject> oldList,
+    Map<Id, SObject> oldMap
+  ) {
+  }
+
   public void afterUpdate(
-    List<Adoption__c> newRecords,
-    Map<Id, Adoption__c> oldMap
+    List<SObject> newList,
+    Map<Id, SObject> newMap,
+    List<SObject> oldList,
+    Map<Id, SObject> oldMap
   ) {
     EmailTemplate template = [
       SELECT Id
@@ -12,8 +28,9 @@ public with sharing class AdoptionStatusChangeTriggerHandler {
 
     List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
-    for (Adoption__c adoption : newRecords) {
-      Adoption__c oldAdoption = oldMap.get(adoption.Id);
+    for (Adoption__c adoption : (List<Adoption__c>) newList) {
+      Adoption__c oldAdoption = ((Map<Id, Adoption__c>) oldMap)
+        .get(adoption.Id);
 
       if (
         adoption.Status__c != oldAdoption.Status__c &&
@@ -33,5 +50,18 @@ public with sharing class AdoptionStatusChangeTriggerHandler {
     if (!emails.isEmpty()) {
       Messaging.sendEmail(emails);
     }
+  }
+
+  public void beforeDelete(List<SObject> oldList, Map<Id, SObject> oldMap) {
+  }
+
+  public void afterDelete(List<SObject> oldList, Map<Id, SObject> oldMap) {
+  }
+
+  public void afterUndelete(List<SObject> newList, Map<Id, SObject> newMap) {
+  }
+
+  public Boolean isDisabled() {
+    return false;
   }
 }
