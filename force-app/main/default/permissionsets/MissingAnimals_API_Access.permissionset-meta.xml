@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description
-  >Access External Credential for integration с MissingAnimals API</description>
+    <description>Access External Credential for integration с MissingAnimals API</description>
     <externalCredentialPrincipalAccesses>
         <enabled>true</enabled>
-        <externalCredentialPrincipal
-    >MissingAnimals_OAuth-MissingAnimals_Principal</externalCredentialPrincipal>
+        <externalCredentialPrincipal>MissingAnimals_OAuth-MissingAnimals_Principal</externalCredentialPrincipal>
     </externalCredentialPrincipalAccesses>
     <hasActivationRequired>false</hasActivationRequired>
     <label>MissingAnimals API Access</label>
