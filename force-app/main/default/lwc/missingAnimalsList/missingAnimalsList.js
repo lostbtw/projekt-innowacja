@@ -33,7 +33,16 @@ export default class MissingAnimalsList extends LightningElement {
 
         getAnimalsWithImages({ dayDelta: delta })
             .then(result => { 
-                this.animals = result; 
+                this.animals = result.map(animal => {
+                    if (animal.missingDate) {
+                        const d = new Date(animal.missingDate);
+                        if (!isNaN(d.getTime())) {
+                            const pad = (n) => n.toString().padStart(2, '0');
+                            animal.missingDate = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+                        }
+                    }
+                    return animal;
+                });
             })
             .catch(error => { 
                 console.error('Fetch error', error); 
