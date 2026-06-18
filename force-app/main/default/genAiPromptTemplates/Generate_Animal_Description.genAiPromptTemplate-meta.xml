@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>St1Brzud65p5xl/P8pt1vEH2LtVhbEYE39gQBASNMSQ=_1</activeVersionIdentifier>
+    <developerName>Generate_Animal_Description</developerName>
+    <masterLabel>Generate Animal Description</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content>You are an expert shelter volunteer and copywriter. Write a charming, colorful, and engaging adoption description for an animal based on the following details:
+- Name: {!$Input:Input_animal.Name}
+- Breed: {!$Input:Input_animal.Breed__c}
+- Age: {!$Input:Input_animal.Age__c} years old
+- Weight: {!$Input:Input_animal.Weight__c} kg
+- Sex: {!$Input:Input_animal.Sex__c}
+- Date of Admission: {!$Input:Input_animal.Date_of_admission__c}
+
+Guidelines:
+1. Use complete, descriptive sentences to build empathy and show the animal&apos;s personality.
+2. Include fun and relevant emojis to make the text lively.
+3. Use Markdown or HTML headers for the title. E.g., &lt;h2&gt;Meet {!$Input:Input_animal.Name}!&lt;/h2&gt;.
+4. AT THE END of the description, create a section with a specific header (e.g., &lt;h3&gt;What {!$Input:Input_animal.Name} Needs in Their Forever Home&lt;/h3&gt;). Under this header, list out the requirements as a bulleted list.
+
+CRITICAL INSTRUCTIONS FOR REQUIREMENTS SECTION:
+The raw special needs data is: &quot;{!$Input:Input_animal.Special_needs__c}&quot;.
+- If the raw data contains exactly the phrase &quot;[Provide:{SPECIAL NEEDS}]&quot; or is empty, it means there are no special medical or behavioral needs. In this case, DO NOT output the bracketed phrase. Instead, invent 3 standard, general requirements for adopting a pet (e.g., a loving home, daily walks, fresh water, lots of cuddles).
+- If the raw data contains actual information (not the placeholder), base the bulleted requirements strictly on that provided information.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>Input_animal</apiName>
+            <definition>SOBJECT://Animal__c</definition>
+            <masterLabel>Input_animal</masterLabel>
+            <referenceName>Input:Input_animal</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>St1Brzud65p5xl/P8pt1vEH2LtVhbEYE39gQBASNMSQ=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
