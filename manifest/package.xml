@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>Contact</members>
@@ -78,8 +78,11 @@
         <members>AnimalController</members>
         <members>ShelterController</members>
         <members>ShelterCountHelper</members>
+        <members>ITriggerHandler</members>
+        <members>AdoptionCountTriggerHandler</members>
         <members>AdoptionStatusChangeTriggerHandler</members>
         <members>AnimalShelterCountTriggerHandler</members>
+        <members>ShelterFieldProtectionTriggerHandler</members>
         <members>VirtualNonAdoptedCountTriggerHandler</members>
         <members>AnimalSearchController</members>
         <name>ApexClass</name>
