@@ -1,5 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
-import getSheltersInSameCity from '@salesforce/apex/ShelterController.getSheltersInSameCity';
+import getSheltersInSameCity from '@salesforce/apex/ShelterMapController.getSheltersInSameCity';
 
 export default class ShelterMap extends LightningElement {
     @api recordId;
@@ -11,9 +11,6 @@ export default class ShelterMap extends LightningElement {
 
     @wire(getSheltersInSameCity, { shelterId: '$recordId' })
     wiredShelters({ error, data }) {
-        console.log('>>> recordId:', this.recordId);
-        console.log('>>> data:', JSON.stringify(data));
-        console.log('>>> error:', JSON.stringify(error));
         if (data) {
             this.error = undefined;
             this.buildMarkers(data);
@@ -24,31 +21,19 @@ export default class ShelterMap extends LightningElement {
     }
 
     buildMarkers(shelters) {
-        this.mapMarkers = shelters.map(shelter => {
-            const isCurrent = shelter.Id === this.recordId;
-
-            return {
-                location: {
-                    Street: shelter.Street__c || '',
-                    City: shelter.City__c || '',
-                    State: shelter.State__c || '',
-                    PostalCode: shelter.PostalCode__c || '',
-                    Country: shelter.Country__c || ''
-                },
-                value: shelter.Id,
-                title: isCurrent
-                    ? `⭐ ${shelter.Name} (You are here)`
-                    : shelter.Name,
-                description: isCurrent
-                    ? 'Currently viewed shelter'
-                    : `${shelter.Street__c || ''}, ${shelter.City__c || ''}`,
-                icon: isCurrent
-                    ? 'standard:location'
-                    : 'standard:account'
-            };
-        });
-
-        this.selectedMarkerValue = this.recordId;
+        this.mapMarkers = shelters.map(shelter => ({
+            location: {
+                Street: shelter.Address__Street__s || '',
+                City: shelter.Address__City__s || '',
+                State: shelter.Address__StateCode__s || '',
+                PostalCode: shelter.Address__PostalCode__s || '',
+                Country: shelter.Address__CountryCode__s || ''
+            },
+            value: shelter.Id,
+            title: shelter.Name,
+            description: `${shelter.Address__Street__s || ''}, ${shelter.Address__City__s || ''}`,
+            icon: 'standard:account'
+        }));
     }
 
     get hasMarkers() {
@@ -56,6 +41,6 @@ export default class ShelterMap extends LightningElement {
     }
 
     get cardTitle() {
-        return `Shelters in this city (${this.mapMarkers.length})`;
+        return `Shelters in the same city (${this.mapMarkers.length})`;
     }
 }
