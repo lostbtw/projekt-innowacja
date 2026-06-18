@@ -19,9 +19,6 @@ public with sharing class AdoptionStatusChangeTriggerHandler implements ITrigger
     List<SObject> oldList,
     Map<Id, SObject> oldMap
   ) {
-    List<Adoption__c> newRecords = (List<Adoption__c>) newList;
-    Map<Id, Adoption__c> oldMap2 = (Map<Id, Adoption__c>) oldMap;
-
     EmailTemplate template = [
       SELECT Id
       FROM EmailTemplate
@@ -31,8 +28,9 @@ public with sharing class AdoptionStatusChangeTriggerHandler implements ITrigger
 
     List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
 
-    for (Adoption__c adoption : newRecords) {
-      Adoption__c oldAdoption = oldMap2.get(adoption.Id);
+    for (Adoption__c adoption : (List<Adoption__c>) newList) {
+      Adoption__c oldAdoption = ((Map<Id, Adoption__c>) oldMap)
+        .get(adoption.Id);
 
       if (
         adoption.Status__c != oldAdoption.Status__c &&
