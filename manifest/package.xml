@@ -63,6 +63,7 @@
         <members>Contact.Total_Points__c</members>
         <members>Contact.Rewards_Claimed__c</members>
         <members>Shelter__c.Non_Virtual_Adopted_Animals__c</members>
+        <members>Shelter__c.Address__c</members>
         <name>CustomField</name>
     </types>
     <types>
