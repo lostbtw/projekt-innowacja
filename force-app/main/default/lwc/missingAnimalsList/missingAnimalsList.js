@@ -10,6 +10,38 @@ export default class MissingAnimalsList extends LightningElement {
     isLoading = false;
     hasSearched = false;
 
+    currentPage = 1;
+    pageSize = 24;
+
+    get paginatedAnimals() {
+        const start = (this.currentPage - 1) * this.pageSize;
+        return this.animals.slice(start, start + this.pageSize);
+    }
+
+    get isFirstPage() {
+        return this.currentPage <= 1;
+    }
+
+    get isLastPage() {
+        return this.currentPage >= this.totalPages;
+    }
+
+    get totalPages() {
+        return Math.ceil(this.animals.length / this.pageSize) || 1;
+    }
+
+    handlePrevious() {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+        }
+    }
+
+    handleNext() {
+        if (this.currentPage < this.totalPages) {
+            this.currentPage++;
+        }
+    }
+
     isModalOpen = false;
     selectedAnimalId;
     selectedAnimalName;
@@ -28,6 +60,7 @@ export default class MissingAnimalsList extends LightningElement {
     handleSearch() {
         this.hasSearched = true;
         this.isLoading = true;
+        this.currentPage = 1;
         
         const delta = this.dayDelta ? parseInt(this.dayDelta, 10) : null;
 
