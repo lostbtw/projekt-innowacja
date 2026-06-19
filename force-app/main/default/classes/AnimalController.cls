@@ -10,34 +10,34 @@ public with sharing class AnimalController {
     }
 
     public class MissingAnimalRequest {
-        @AuraEnabled public MissingAnimalWrapper missingAnimalWrapper;
+        @AuraEnabled public MissingAnimalWrapper missingAnimalWrapper { get; set; }
     }
 
     public class MissingAnimalWrapper {
-        @AuraEnabled public ReportWrapper report;
-        @AuraEnabled public AnimalDataWrapper animal;
+        @AuraEnabled public ReportWrapper report { get; set; }
+        @AuraEnabled public AnimalDataWrapper animal { get; set; }
     }
 
     public class ReportWrapper {
-        @AuraEnabled public String address;
-        @AuraEnabled public Decimal disappearancePlaceLongitude;
-        @AuraEnabled public Decimal disappearancePlaceLatitude;
-        @AuraEnabled public String disappearanceDate;
-        @AuraEnabled public String description;
+        @AuraEnabled public String address { get; set; }
+        @AuraEnabled public Decimal disappearancePlaceLongitude { get; set; }
+        @AuraEnabled public Decimal disappearancePlaceLatitude { get; set; }
+        @AuraEnabled public String disappearanceDate { get; set; }
+        @AuraEnabled public String description { get; set; }
     }
 
     public class AnimalDataWrapper {
-        @AuraEnabled public String name;
-        @AuraEnabled public String imageUrl;
-        @AuraEnabled public String breed;
-        @AuraEnabled public Integer age;
-        @AuraEnabled public String uniqueFeatures;
-        @AuraEnabled public String size;
+        @AuraEnabled public String name { get; set; }
+        @AuraEnabled public String imageUrl { get; set; }
+        @AuraEnabled public String breed { get; set; }
+        @AuraEnabled public Integer age { get; set; }
+        @AuraEnabled public String uniqueFeatures { get; set; }
+        @AuraEnabled public String size { get; set; }
     }
 
     public class UpdateStatusRequest {
-        @AuraEnabled public String animalId;
-        @AuraEnabled public Boolean found;
+        @AuraEnabled public String animalId { get; set; }
+        @AuraEnabled public Boolean found { get; set; }
     }
 
     @AuraEnabled

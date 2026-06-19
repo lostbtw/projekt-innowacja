@@ -175,7 +175,7 @@ export default class MissingAnimalsList extends LightningElement {
             }
         };
 
-        postMissingAnimal({ jsonBody: JSON.stringify(payload) })
+        postMissingAnimal({ requestBody: payload })
             .then(() => {
                 this.showToast('Success', 'Missing animal reported successfully.', 'success');
                 if (!this.dayDelta) {
