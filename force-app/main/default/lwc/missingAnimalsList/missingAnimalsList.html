@@ -40,7 +40,7 @@
                 <template if:true={hasSearched}>
                     <template if:true={animals.length}>
                         <div class="pets-grid">
-                            <template for:each={animals} for:item="animal">
+                            <template for:each={paginatedAnimals} for:item="animal">
                                 <c-animal-card 
                                     key={animal.id} 
                                     animal-name={animal.name}
@@ -62,6 +62,15 @@
                                 </c-animal-card>
                             </template>
                         </div>
+                        <template if:true={animals.length}>
+                            <div class="slds-m-top_medium slds-grid slds-grid_align-center slds-grid_vertical-align-center">
+                                <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={handlePrevious} disabled={isFirstPage}></lightning-button>
+                                <span class="slds-m-horizontal_medium slds-text-body_regular">
+                                    Page <strong>{currentPage}</strong> of <strong>{totalPages}</strong>
+                                </span>
+                                <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right" onclick={handleNext} disabled={isLastPage}></lightning-button>
+                            </div>
+                        </template>
                     </template>
                     <template if:false={animals.length}>
                         <div class="slds-illustration slds-illustration_small slds-m-top_large">
