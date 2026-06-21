@@ -82,11 +82,13 @@
         <members>ShelterController</members>
         <members>ShelterCountHelper</members>
         <members>ITriggerHandler</members>
-        <members>AdoptionCountTriggerHandler</members>
-        <members>AdoptionStatusChangeTriggerHandler</members>
-        <members>AnimalShelterCountTriggerHandler</members>
-        <members>ShelterFieldProtectionTriggerHandler</members>
-        <members>VirtualNonAdoptedCountTriggerHandler</members>
+        <members>AdoptionTriggerHandler</members>
+        <members>AnimalTriggerHandler</members>
+        <members>ShelterTriggerHandler</members>
+        <members>AdoptionCountService</members>
+        <members>AdoptionStatusService</members>
+        <members>AnimalShelterCountService</members>
+        <members>ShelterFieldProtectionService</members>
         <members>AnimalSearchController</members>
         <members>ShelterMapController</members>
         <name>ApexClass</name>
