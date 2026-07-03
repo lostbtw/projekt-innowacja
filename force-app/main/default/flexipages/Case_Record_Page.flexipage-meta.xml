@@ -20,6 +20,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -29,10 +33,6 @@
         </itemInstances>
         <name>header</name>
         <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>Facet-e3b6f64d-2f8f-4b43-ba7f-4f4fd55e442f</name>
-        <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
@@ -69,18 +69,14 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-e3b6f64d-2f8f-4b43-ba7f-4f4fd55e442f</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.detail</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab</identifier>
+                <componentName>force:detailPanel</componentName>
+                <identifier>force_detailPanel</identifier>
             </componentInstance>
         </itemInstances>
+        <name>Facet-f77c01a4-661e-4d44-881a-54bac924a3ed</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -111,6 +107,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>relatedListsTab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-f77c01a4-661e-4d44-881a-54bac924a3ed</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Standard.Tab.detail</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
         <name>tabs</name>

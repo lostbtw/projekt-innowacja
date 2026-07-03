@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier
+  >St1Brzud65p5xl/P8pt1vEH2LtVhbEYE39gQBASNMSQ=_1</activeVersionIdentifier>
+    <description
+  >Generates an AI email when adoption status changes to Approved</description>
+    <developerName>Adoption_Approved_Email</developerName>
+    <masterLabel>Adoption Approved Email</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content
+    >You are a warm and professional assistant working at an animal shelter.
+
+Write a friendly and heartfelt adoption confirmation email to the adopter.
+
+Use the following information:
+
+ADOPTER DETAILS:
+- First Name: {!$Input:Contact.FirstName}
+- Last Name: {!$Input:Contact.LastName}
+
+ANIMAL DETAILS:
+- Name: {!$Input:Animal.Name}
+- Breed: {!$Input:Animal.Breed__c}
+- Age: {!$Input:Animal.Age__c}
+- Sex: {!$Input:Animal.Sex__c}
+- Weight: {!$Input:Animal.Weight__c}
+- Special Needs: {!$Input:Animal.Special_needs__c}
+
+SHELTER DETAILS:
+- Shelter Name: {!$Input:Shelter.Name}
+- Shelter Address: {!$Input:Shelter.Address__Street__s}
+{!$Input:Shelter.Address__City__s}
+{!$Input:Shelter.Address__PostalCode__s}
+
+ 
+
+INSTRUCTIONS:
+- Start with &quot;Dear [First Name] [Last Name],&quot;
+- Mention the animal by name and include its key details naturally
+- Let the adopter know they need to visit the shelter to finalize the adoption
+- Include the shelter name and address clearly
+- End warmly, signed by &quot;The Team at [Shelter Name]&quot;
+- Do NOT include a subject line in the body
+- Keep the tone warm, joyful and professional
+
+</content>
+        <fileDroppingStrategy
+    >{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>Adoption</apiName>
+            <definition>SOBJECT://Adoption__c</definition>
+            <masterLabel>Adoption__c</masterLabel>
+            <referenceName>Input:Adoption</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Contact</apiName>
+            <definition>SOBJECT://Contact</definition>
+            <masterLabel>Contact</masterLabel>
+            <referenceName>Input:Contact</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Animal</apiName>
+            <definition>SOBJECT://Animal__c</definition>
+            <masterLabel>Animal__c</masterLabel>
+            <referenceName>Input:Animal</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Shelter</apiName>
+            <definition>SOBJECT://Shelter__c</definition>
+            <masterLabel>Shelter__c</masterLabel>
+            <referenceName>Input:Shelter</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier
+    >St1Brzud65p5xl/P8pt1vEH2LtVhbEYE39gQBASNMSQ=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
