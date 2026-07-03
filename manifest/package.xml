@@ -88,8 +88,6 @@
         <members>ShelterFieldProtectionTriggerHandler</members>
         <members>VirtualNonAdoptedCountTriggerHandler</members>
         <members>AnimalSearchController</members>
-        <members>CreateAdoptionAgentforceService</members>
-        <members>RejectAdoptionAgentforceService</members>
         <members>ShelterMapController</members>
         <name>ApexClass</name>
     </types>

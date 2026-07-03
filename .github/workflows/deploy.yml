@@ -23,4 +23,14 @@ jobs:
       - name: Deploy metadata
         run: |
           sf project deploy start --manifest manifest/package.xml --target-org ci
-          sf project deploy start -d force-app/main/default/genAiPromptTemplates/ -d force-app/main/default/flows/Animal_Description_Generation.flow-meta.xml --target-org ci
+
+      - name: Deploy AI components
+        run: |
+          sf project deploy start \
+            -d force-app/main/default/classes/CreateAdoptionAgentforceService.cls \
+            -d force-app/main/default/classes/CreateAdoptionAgentforceService.cls-meta.xml \
+            -d force-app/main/default/classes/RejectAdoptionAgentforceService.cls \
+            -d force-app/main/default/classes/RejectAdoptionAgentforceService.cls-meta.xml \
+            -d force-app/main/default/genAiPromptTemplates/ \
+            -d force-app/main/default/flows/Animal_Description_Generation.flow-meta.xml \
+            --target-org ci
