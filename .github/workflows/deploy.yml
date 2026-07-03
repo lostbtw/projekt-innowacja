@@ -31,7 +31,8 @@ jobs:
             -d force-app/main/default/classes/CreateAdoptionAgentforceService.cls-meta.xml \
             -d force-app/main/default/classes/RejectAdoptionAgentforceService.cls \
             -d force-app/main/default/classes/RejectAdoptionAgentforceService.cls-meta.xml \
-            -d force-app/main/default/genAiPromptTemplates/ \
+            -d force-app/main/default/genAiPromptTemplates/Adoption_Approved_Email.genAiPromptTemplate-meta.xml \
+            -d force-app/main/default/genAiPromptTemplates/Generate_Animal_Description.genAiPromptTemplate-meta.xml \
             -d force-app/main/default/flows/Animal_Description_Generation.flow-meta.xml \
             -d force-app/main/default/flows/Adoption_Approved_Email_Flow.flow-meta.xml \
             --target-org ci
